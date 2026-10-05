@@ -1,0 +1,240 @@
+#omg-header {
+  z-index: 450;
+}
+
+/* core.css is shared across other projects, so the theme-picker's swatch
+   styling stays untouched there -- this overrides it to render icons
+   (sun/moon/spiral, same set as react-morph-charts' ThemeToggle) instead of
+   plain colored circles, without needing to edit the shared file. */
+#omg-theme-picker {
+  gap: 2px;
+}
+#omg-theme-picker > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: none;
+  color: currentColor;
+  opacity: 0.75;
+}
+#omg-theme-picker > a:hover {
+  opacity: 1;
+}
+#omg-theme-picker > a.selected {
+  opacity: 1;
+}
+
+/* Theme toggle + GitHub link as one row, anchored top right (core.css
+   normally anchors #omg-theme-picker there directly; "static" here lets it
+   sit inline instead, with the gap coming from the flex row). */
+#omg-header-tools {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#omg-header-tools #omg-theme-picker {
+  position: static;
+}
+
+/* GitHub link, same look as the theme toggle's icons */
+#omg-github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: none;
+  opacity: 0.75;
+}
+#omg-github svg {
+  width: 30px; /* same size in every theme (the themes' generic svg rule differs) */
+  height: 30px;
+}
+html[data-theme="evol-blue"] #omg-github svg {
+  fill: white; /* like the theme toggle icons on the blue background */
+}
+#omg-github:hover,
+#omg-github:focus-visible {
+  opacity: 1;
+}
+
+
+/* ---------------------------------------------------------------- layout */
+
+.content {
+  max-width: 1000px;
+}
+.app-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+.art-wrap {
+  position: relative;
+  flex: 0 1 600px;
+  border-radius: 4px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.art-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* painting with a finger must not scroll the page */
+}
+.controls {
+  flex: 0 0 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.95em;
+}
+.controls label > span {
+  display: flex;
+  justify-content: space-between;
+}
+.controls label b {
+  font-weight: 400;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+.controls label.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.controls select {
+  font: inherit;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: var(--input-text);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+}
+.controls input[type="range"] {
+  width: 100%;
+  margin: 2px 0;
+  box-sizing: border-box;
+  accent-color: var(--accent);
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.controls button {
+  margin: 0;
+}
+.controls button.secondary {
+  background: transparent;
+  color: inherit;
+  border: 2px solid var(--card-border);
+}
+.controls button.secondary:hover,
+.controls button.secondary:focus-visible {
+  background: var(--card-bg);
+}
+.controls button.on {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.hint,
+.note {
+  margin: 0;
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+.hint:empty {
+  display: none;
+}
+.explain p {
+  max-width: 680px;
+  line-height: 1.55;
+}
+.footer {
+  margin-top: 40px;
+}
+@media only screen and (max-width: 800px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  .art-wrap {
+    flex: none;
+    width: 100%;
+  }
+  .controls {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* keep the title clear of the theme toggle and GitHub icon on phones */
+@media only screen and (max-width: 560px) {
+  #omg-header {
+    padding-top: 40px; /* the icons sit above the title */
+  }
+  #omg-header h1 {
+    font-size: min(2em, 8.4vw);
+  }
+}
+
+
+/* ---------------------------------------------------------------- snowflake-grower */
+
+:root {
+  --accent: #7fc4ff;
+}
+
+.tools,
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.tools button {
+  margin: 0;
+  padding: 7px 8px;
+}
+.tools .wide,
+.buttons .wide {
+  grid-column: span 2;
+}
+.tools button.on {
+  background: var(--card-bg);
+  border-color: var(--accent);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95em;
+}
+.field > span b,
+.controls label > span b {
+  font-weight: 400;
+  opacity: 0.75;
+}
+[hidden] {
+  display: none !important;
+}
+
+.art-wrap {
+  aspect-ratio: 1;
+  background: #0a162c;
+  border-radius: 50%;
+  box-shadow: 0 10px 40px rgba(60, 130, 220, 0.25);
+}

@@ -1,0 +1,22 @@
+{
+  "name": "snowflake-grower",
+  "version": "1.0.0",
+  "description": "Grow snow crystals live on a hexagonal grid with Reiter's cellular automaton. Set the humidity and frost to get stellar dendrites, ferns, plates or lace, and download the snowflake.",
+  "repository": "github:evoluteur/snowflake-grower",
+  "homepage": "https://evoluteur.github.io/snowflake-grower/",
+  "copyright": "(c) 2026 Olivier Giulieri",
+  "author": "Olivier Giulieri (https://evoluteur.github.io/)",
+  "license": "MIT",
+  "keywords": [
+    "snowflake",
+    "snow-crystal",
+    "cellular-automaton",
+    "reiter",
+    "hexagonal-grid",
+    "nakaya",
+    "crystal-growth",
+    "generative-art",
+    "simulation",
+    "esoterica"
+  ]
+}
