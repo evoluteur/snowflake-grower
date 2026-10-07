@@ -14,6 +14,8 @@ Humidity, frost, and six arms: grow snow crystals live on a hexagonal grid, with
 - **Look**: Ice (thicker ice is whiter, and the dark halo shows the air the crystal has drained), Growth rings (colored by when each cell froze), or Paper cut.
 - **Speed**, **Pause**, **Grow again**, and **Download PNG**. The address of the page keeps the weather, to share it.
 
+[![The nine crystals, fully grown](snowflakes.png)](https://evoluteur.github.io/snowflake-grower/)
+
 ## How it is built
 
 The crystal grows on a 301 × 301 grid of hexagonal cells. Each step, the cells that are ice or touch ice keep their water and add &gamma; to it; the water of the other cells diffuses (each moves &alpha;/2 of the way to the average of itself and its six neighbors). A cell freezes when its water reaches 1. The air beyond the edge of the disk stays at the background humidity &beta;, an endless supply. This is the model of Clifford A. Reiter, *A local cellular model for snow crystal growth* (Chaos, Solitons & Fractals, 2005).
